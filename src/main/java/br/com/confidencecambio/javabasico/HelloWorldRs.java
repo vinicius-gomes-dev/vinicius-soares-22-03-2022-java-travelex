@@ -23,4 +23,12 @@ public class HelloWorldRs {
         var retorno = "Ola " + service.retornaValorValido(nome);
         return new ResponseEntity<>(retorno, HttpStatus.OK);
     }
+    
+    
+    @RequestMapping(value = "/calcular-imc", method = RequestMethod.GET)
+    public ResponseEntity<String> calcularImc(@RequestParam(value = "peso", required = false) Double peso,
+    										@RequestParam(value = "altura", required = false) Double altura) {
+    	var retorno = "Seu IMC é " + service.retornaCalculoImc(peso, altura, null);
+    	return new ResponseEntity<>(String.valueOf(retorno), HttpStatus.OK);
+    }
 }
